@@ -1,6 +1,7 @@
 package net.dassi.services.server;
 
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.actuate.system.ApplicationPidFileWriter;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -8,10 +9,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.client.RestTemplate;
 
-import net.dassi.services.client.Client;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
-import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.ApiInfo;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
@@ -24,7 +23,10 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 public class Application {
 
 	public static void main(String[] args) {
-		ApplicationContext context = SpringApplication.run(Application.class, args);
+		SpringApplication springApplication = new SpringApplication(Application.class);
+
+        springApplication.addListeners(new ApplicationPidFileWriter());
+		ApplicationContext context = springApplication.run(args);
 		//System.out.println(( (Client) context.getBean("restClient")).getAllEmployees());
 	}
 	
