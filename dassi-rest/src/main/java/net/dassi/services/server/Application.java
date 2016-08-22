@@ -38,7 +38,7 @@ public class Application {
     @Bean
     public Docket newsApi() {
         return new Docket(DocumentationType.SWAGGER_2)
-                .groupName("greetings")
+                .groupName("Dassi Services")
                 .apiInfo(apiInfo())
                 .select()
                 .paths(PathSelectors.any())
