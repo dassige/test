@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+		"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hibernate.connection.password">pangolo</property>
+        <property name="hibernate.connection.url">jdbc:mysql://dgsoft.info:3306/dassi_net</property>
+        <property name="hibernate.connection.username">dassi_net</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLInnoDBDialect</property>
+		<mapping resource="net/dassi/services/impl/persistence/Services.hbm.xml" />
+    </session-factory>
+</hibernate-configuration>
