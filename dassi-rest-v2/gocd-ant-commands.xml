@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <project name="antsimple" default="" basedir=".">
     <target name="createTmpDir" depends="deleteTmpDir">
-        <mkdir dir="${env.JAVA_TMP_DIR}" />
-    	<echo message="${env.JAVA_TMP_DIR} created"/>
+        <mkdir dir="tmp" />
+    	<echo message="tmp created"/>
     </target>
     <target name="deleteTmpDir">
-        <delete dir="${env.JAVA_TMP_DIR} deleted" />
+        <delete dir="tmp deleted" />
     </target>
 </project>
