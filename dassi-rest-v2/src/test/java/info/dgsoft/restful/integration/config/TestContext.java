@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Configuration;
 
 import info.dgsoft.restful.integration.util.TestApiConfig;
 
+
 @Configuration
 public class TestContext {
 
@@ -17,7 +18,6 @@ public class TestContext {
     TomcatEmbeddedServletContainerFactory factory = new TomcatEmbeddedServletContainerFactory();
     factory.setPort(TestApiConfig.PORT);
     factory.setSessionTimeout(10, TimeUnit.MINUTES);
-    System.out.println("java.io.tmpdir: " + System.getProperty("java.io.tmpdir"));
     return factory;
   }
 

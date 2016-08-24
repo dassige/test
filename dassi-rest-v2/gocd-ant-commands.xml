@@ -5,6 +5,7 @@
     	<echo message="tmp created"/>
     </target>
     <target name="deleteTmpDir">
-        <delete dir="tmp deleted" />
+        <delete dir="tmp" />
+    	<echo message="tmp deleted"/>
     </target>
 </project>
