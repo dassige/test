@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <project name="antsimple" default="" basedir=".">
-    <target name="createTmpDir" depends="deleteTmpDir">
+    <target name="createTmpDir" depends="">
         <mkdir dir="tmp" />
     	<echo message="tmp created"/>
     </target>
