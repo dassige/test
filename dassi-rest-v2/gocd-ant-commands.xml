@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<project name="antsimple" default="dist" basedir=".">
+<project name="antsimple" default="" basedir=".">
     <target name="createTmpDir">
-        <mkdir dir="./tmp" />
+        <mkdir dir="C:/temp/gocd/temp" />
     </target>
 </project>
