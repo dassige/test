@@ -2,8 +2,8 @@ package info.dgsoft.restful.auth.model.factory;
 
 import org.springframework.security.core.authority.AuthorityUtils;
 
-import info.dgsoft.restful.api.domain.entity.User;
-import info.dgsoft.restful.auth.model.security.SecurityUser;
+import info.dgsoft.restful.api.security.SecurityUser;
+import info.dgsoft.restful.auth.domain.entity.User;
 
 public class SecurityUserFactory
 {

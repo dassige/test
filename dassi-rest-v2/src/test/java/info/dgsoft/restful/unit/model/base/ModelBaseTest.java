@@ -4,7 +4,7 @@ import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import org.junit.Before;
 import org.junit.Test;
 
-import info.dgsoft.restful.auth.model.base.ModelBase;
+import info.dgsoft.restful.model.base.ModelBase;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;

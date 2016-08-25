@@ -1,6 +1,8 @@
 package info.dgsoft.restful.controller;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Iterator;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,8 +11,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import info.dgsoft.ApplicationConfiguration;
-import info.dgsoft.restful.api.domain.entity.DGService;
+import info.dgsoft.restful.api.service.DGService;
+import info.dgsoft.restful.domain.entity.DGServiceEntity;
 import info.dgsoft.restful.impl.ServicesInterface;
+import info.dgsoft.restful.model.factory.DGServiceFactory;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
@@ -30,7 +34,7 @@ public class MainController
 
 	@ApiOperation(value = "GetServices", nickname = "nick GetServices", notes = "gets the services")
 	@ApiResponses(
-			value = { @ApiResponse(code = 200, message = "Success", response = DGService.class),
+			value = { @ApiResponse(code = 200, message = "Success", response = DGServiceEntity.class),
 					@ApiResponse(code = 401, message = "Unauthorized"),
 					@ApiResponse(code = 403, message = "Forbidden"),
 					@ApiResponse(code = 404, message = "Not Found"),
@@ -40,7 +44,13 @@ public class MainController
 	@ResponseBody
 	public Collection<DGService> getServices()
 	{
-		Collection<DGService> dgServices = serviceImpl.getServices();
+		Collection<DGServiceEntity> dgServiceEntities = serviceImpl.getServices();
+		Collection<DGService> dgServices = new ArrayList<>();
+		for (DGServiceEntity entity : dgServiceEntities)
+		{
+			dgServices.add(DGServiceFactory.create(entity));
+			
+		}
 		return dgServices;
 	}
 

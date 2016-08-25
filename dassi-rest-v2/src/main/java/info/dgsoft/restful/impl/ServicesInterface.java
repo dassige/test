@@ -2,9 +2,9 @@ package info.dgsoft.restful.impl;
 
 import java.util.Collection;
 
-import info.dgsoft.restful.api.domain.entity.DGService;
+import info.dgsoft.restful.domain.entity.DGServiceEntity;
 
 public interface ServicesInterface
 {
-	public Collection<DGService> getServices();
+	public Collection<DGServiceEntity> getServices();
 }

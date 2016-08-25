@@ -6,7 +6,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import info.dgsoft.restful.api.domain.entity.User;
+import info.dgsoft.restful.auth.domain.entity.User;
 import info.dgsoft.restful.auth.model.factory.SecurityUserFactory;
 import info.dgsoft.restful.auth.repository.UserRepository;
 

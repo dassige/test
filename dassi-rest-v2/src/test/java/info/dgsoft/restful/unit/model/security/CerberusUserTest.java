@@ -7,7 +7,7 @@ import org.junit.Test;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 
-import info.dgsoft.restful.auth.model.security.SecurityUser;
+import info.dgsoft.restful.api.security.SecurityUser;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertEquals;

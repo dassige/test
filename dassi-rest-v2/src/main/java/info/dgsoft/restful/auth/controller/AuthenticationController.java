@@ -19,9 +19,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import info.dgsoft.restful.api.auth.AuthenticationRequest;
-import info.dgsoft.restful.api.auth.AuthenticationResponse;
-import info.dgsoft.restful.auth.model.security.SecurityUser;
+import info.dgsoft.restful.api.security.SecurityUser;
+import info.dgsoft.restful.auth.domain.json.AuthenticationRequest;
+import info.dgsoft.restful.auth.domain.json.AuthenticationResponse;
 import info.dgsoft.restful.auth.security.TokenUtils;
 
 @RestController

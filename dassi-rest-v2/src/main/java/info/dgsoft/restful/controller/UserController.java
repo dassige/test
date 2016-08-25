@@ -1,36 +1,41 @@
 package info.dgsoft.restful.controller;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import info.dgsoft.restful.api.domain.entity.User;
+import info.dgsoft.restful.api.security.SecurityUser;
+import info.dgsoft.restful.auth.domain.entity.User;
+import info.dgsoft.restful.auth.model.factory.SecurityUserFactory;
 import info.dgsoft.restful.auth.repository.UserRepository;
 
-/**
- * A class to test interactions with the MySQL database using the UserDao class.
- *
- * @author net.dgsoft
- */
 @Controller
 public class UserController
 {
 
-	// ------------------------
-	// PUBLIC METHODS
-	// ------------------------
+	@Autowired
+	private UserRepository userDao;
 
-	@RequestMapping("/get-all")
+	@RequestMapping(value = "/users", method = RequestMethod.GET, produces = "application/json")
 	@ResponseBody
-	public Collection<User> getAll()
+	public Collection<SecurityUser> getAll()
 	{
 		try
 		{
 			Collection<User> users = (Collection<User>) userDao.findAll();
-			return users;
+			Collection<SecurityUser> securityUsers = new ArrayList<>();
+			for (User user : users)
+			{
+				securityUsers.add(SecurityUserFactory.create(user));
+			}
+
+			return securityUsers;
 		} catch (Exception ex)
 		{
 			return null;
@@ -38,11 +43,19 @@ public class UserController
 
 	}
 
-	// ------------------------
-	// PRIVATE FIELDS
-	// ------------------------
+	@RequestMapping(value = "/users/{username}", method = RequestMethod.GET, produces = "application/json")
+	@ResponseBody
+	public SecurityUser getUser(@PathVariable String username)
+	{
+		try
+		{
+			User user = userDao.findByUsername(username);
+			return SecurityUserFactory.create(user);
+		} catch (Exception ex)
+		{
+			return null;
+		}
 
-	@Autowired
-	private UserRepository userDao;
+	}
 
-} // class UserController
+}

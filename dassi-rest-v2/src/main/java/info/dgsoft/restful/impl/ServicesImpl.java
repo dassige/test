@@ -5,7 +5,7 @@ import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import info.dgsoft.restful.api.domain.entity.DGService;
+import info.dgsoft.restful.domain.entity.DGServiceEntity;
 import info.dgsoft.restful.impl.persistence.ServiceRepository;
 
 @Service
@@ -16,9 +16,9 @@ public class ServicesImpl implements ServicesInterface
 	private ServiceRepository serviceRepo;
 
 	@Override
-	public Collection<DGService> getServices()
+	public Collection<DGServiceEntity> getServices()
 	{
-		return (Collection<DGService>) serviceRepo.findAll();
+		return (Collection<DGServiceEntity>) serviceRepo.findAll();
 	}
 
 }

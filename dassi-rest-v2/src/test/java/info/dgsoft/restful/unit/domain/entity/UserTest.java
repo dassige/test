@@ -4,7 +4,7 @@ import java.util.Date;
 
 import org.junit.Test;
 
-import info.dgsoft.restful.api.domain.entity.User;
+import info.dgsoft.restful.auth.domain.entity.User;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertNull;
