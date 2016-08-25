@@ -9,10 +9,10 @@
 	<property name="host.name" value="www.dgsoft.info"/>
 	<property name="host.user" value="dassi.net"/>
 	<property name="host.password" value="1010!pangolo"/>
-	<property name="host.path" value="/home1/dassi.net/rest-services/"/>
+	<property name="host.path" value="/home1/dassi.net/rest-services"/>
 	<property name="host.service" value="dassi-rest-server"/>
 	
-	
+	<echo message="user: ${host.user}"/>	
 	<target name="createTmpDir" depends="">
 		<mkdir dir="tmp" />
 		<echo message="tmp created" />
@@ -29,7 +29,7 @@
 		<sshexec host="${host.name}"
 			username="${host.user}"
 			password="${host.password}"
-			command="ln -sfn ${host.path}${artifact.name} ${symlink.name}"/>
+			command="ln -sfn ${host.path}/${artifact.name} ${symlink.name}"/>
 	</target>
 	<target name="restart">
 		<sshexec host="${host.name}"
