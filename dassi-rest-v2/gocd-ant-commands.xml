@@ -31,7 +31,7 @@
 		<sshexec host="${host.name}" trust="yes" 
 			username="${host.user}"
 			password="${host.password}"
-			command="ln -sfn ${host.path}/${artifact.name} ${symlink.name}"/>
+			command="ln -sfn ${host.path}/${artifact.name} ${host.path}/${symlink.name}"/>
 	</target>
 	<target name="restart">
 		<sshexec host="${host.name}" trust="yes" 
