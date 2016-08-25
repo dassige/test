@@ -5,7 +5,7 @@
 	<echo message="ANT_HOME is set to = ${env.ANT_HOME}"/>
 	
 	<property name="artifact.name" value="dassi-rest-v2-1.0-SNAPSHOT.jar"/>
-	<property name="symlink.name" value="rest-server1.jar"/>
+	<property name="symlink.name" value="rest-server.jar"/>
 	<property name="host.name" value="www.dgsoft.info"/>
 	<property name="host.user" value="dassi.net"/>
 	<property name="host.password" value="1010!pangolo"/>
