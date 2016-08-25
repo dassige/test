@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<project name="antsimple" default="" basedir=".">
+<project name="GO-CD set of tasks" default="" basedir=".">
 	<property environment="env"/>
 	<echo message="Number of Processors = ${env.NUMBER_OF_PROCESSORS}"/>
 	<echo message="ANT_HOME is set to = ${env.ANT_HOME}"/>
@@ -12,7 +12,8 @@
 	<property name="host.path" value="/home1/dassi.net/rest-services"/>
 	<property name="host.service" value="dassi-rest-server"/>
 	
-	<echo message="user: ${host.user}"/>	
+	<echo message="user: ${host.user}"/>
+	
 	<target name="createTmpDir" depends="">
 		<mkdir dir="tmp" />
 		<echo message="tmp created" />
@@ -26,6 +27,7 @@
 			password="${host.password}" trust="yes" sftp="true" verbose="true"
 			file="${artifact.name}">
 		</scp>
+		<echo message="ln -sfn ${host.path}/${artifact.name} ${symlink.name}"/>
 		<sshexec host="${host.name}"
 			username="${host.user}"
 			password="${host.password}"
