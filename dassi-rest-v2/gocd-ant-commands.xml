@@ -28,13 +28,13 @@
 			file="${artifact.name}">
 		</scp>
 		<echo message="ln -sfn ${host.path}/${artifact.name} ${symlink.name}"/>
-		<sshexec host="${host.name}"
+		<sshexec host="${host.name}" trust="yes" 
 			username="${host.user}"
 			password="${host.password}"
 			command="ln -sfn ${host.path}/${artifact.name} ${symlink.name}"/>
 	</target>
 	<target name="restart">
-		<sshexec host="${host.name}"
+		<sshexec host="${host.name}" trust="yes" 
 			username="${host.user}"
 			password="${host.password}"
 			command="systemctl restart ${host.service}.service"/>
