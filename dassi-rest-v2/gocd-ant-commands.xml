@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <project name="antsimple" default="" basedir=".">
+	<property environment="env"/>
+	<echo message="Number of Processors = ${env.NUMBER_OF_PROCESSORS}"/>
+	<echo message="ANT_HOME is set to = ${env.ANT_HOME}"/>
+	
+	<property name="artifact.name" value="dassi-rest-v2-1.0-SNAPSHOT.jar"/>
+	<property name="symlink.name" value="rest-server1.jar"/>
+	<property name="host.name" value="www.dgsoft.info"/>
+	<property name="host.user" value="dassi.net"/>
+	<property name="host.password" value="1010!pangolo"/>
+	<property name="host.path" value="/home1/dassi.net/rest-services/"/>
+	
+	
 	<target name="createTmpDir" depends="">
 		<mkdir dir="tmp" />
 		<echo message="tmp created" />
@@ -9,9 +21,13 @@
 		<echo message="tmp deleted" />
 	</target>
 	<target name="deploy">
-		<!--    <scp file="dassi-rest-v2-1.0-SNAPSHOT.jar" todir="dassi.net@www.dgsoft.info:/home1/dassi.net/rest-services" password="1010!pangolo"/> -->
-		<scp remoteTodir="dassi.net@www.dgsoft.info:/home1/dassi.net/rest-services" password="1010!pangolo" trust="yes" sftp="true" file="dassi-rest-v2-1.0-SNAPSHOT.jar">
+		<scp remoteTodir="${host.user}@${host.name}:${host.path}" 
+			password="${host.password}" trust="yes" sftp="true" verbose="true"
+			file="${artifact.name}">
 		</scp>
+		<sshexec host="www.dgsoft.info"
+			username="${host.user}"
+			password="${host.password}"
+			command="ln -sfn ${host.path}${artifact.name} ${symlink.name}"/>
 	</target>
-
 </project>
