@@ -10,6 +10,7 @@
 	<property name="host.user" value="dassi.net"/>
 	<property name="host.password" value="1010!pangolo"/>
 	<property name="host.path" value="/home1/dassi.net/rest-services/"/>
+	<property name="host.service" value="dassi-rest-server"/>
 	
 	
 	<target name="createTmpDir" depends="">
@@ -25,9 +26,15 @@
 			password="${host.password}" trust="yes" sftp="true" verbose="true"
 			file="${artifact.name}">
 		</scp>
-		<sshexec host="www.dgsoft.info"
+		<sshexec host="${host.name}"
 			username="${host.user}"
 			password="${host.password}"
 			command="ln -sfn ${host.path}${artifact.name} ${symlink.name}"/>
+	</target>
+	<target name="restart">
+		<sshexec host="${host.name}"
+			username="${host.user}"
+			password="${host.password}"
+			command="systemctl restart ${host.service}.service"/>
 	</target>
 </project>
