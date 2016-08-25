@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <project name="antsimple" default="" basedir=".">
-    <target name="createTmpDir" depends="">
-        <mkdir dir="tmp" />
-    	<echo message="tmp created"/>
-    </target>
-    <target name="deleteTmpDir">
-        <delete dir="tmp" />
-    	<echo message="tmp deleted"/>
-    </target>
+	<target name="createTmpDir" depends="">
+		<mkdir dir="tmp" />
+		<echo message="tmp created" />
+	</target>
+	<target name="deleteTmpDir">
+		<delete dir="tmp" />
+		<echo message="tmp deleted" />
+	</target>
+	<target name="deploy">
+		<!--    <scp file="dassi-rest-v2-1.0-SNAPSHOT.jar" todir="dassi.net@www.dgsoft.info:/home1/dassi.net/rest-services" password="1010!pangolo"/> -->
+		<scp remoteTodir="dassi.net@www.dgsoft.info:/home1/dassi.net/rest-services" password="1010!pangolo" trust="yes" sftp="true" file="dassi-rest-v2-1.0-SNAPSHOT.jar">
+		</scp>
+	</target>
+
 </project>
