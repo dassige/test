@@ -5,9 +5,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mobile.device.Device;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import info.dgsoft.restful.api.security.SecurityUser;
@@ -189,6 +191,13 @@ public class TokenUtils
 		final Date expiration = this.getExpirationDateFromToken(token);
 		return (username.equals(user.getUsername()) && !(this.isTokenExpired(token))
 				&& !(this.isCreatedBeforeLastPasswordReset(created, user.getLastPasswordReset())));
+	}
+	
+	public String generateEncodedPassword(String plainPassword)
+	{
+		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		String hashedPassword = passwordEncoder.encode(plainPassword);
+		return hashedPassword;
 	}
 
 }

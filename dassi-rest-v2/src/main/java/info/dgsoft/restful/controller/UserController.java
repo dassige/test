@@ -6,6 +6,7 @@ import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -14,6 +15,7 @@ import info.dgsoft.restful.api.security.SecurityUser;
 import info.dgsoft.restful.auth.domain.entity.User;
 import info.dgsoft.restful.auth.model.factory.SecurityUserFactory;
 import info.dgsoft.restful.auth.repository.UserRepository;
+import info.dgsoft.restful.auth.security.TokenUtils;
 
 @Controller
 public class UserController
@@ -21,6 +23,9 @@ public class UserController
 
 	@Autowired
 	private UserRepository userDao;
+
+	@Autowired
+	private TokenUtils tokenUtils;
 
 	@RequestMapping(value = "/users", method = RequestMethod.GET, produces = "application/json")
 	@ResponseBody
@@ -55,6 +60,13 @@ public class UserController
 		{
 			return null;
 		}
+
+	}
+	
+	@RequestMapping(value = "/users/generate-pwd", method = RequestMethod.POST, produces = "application/json")
+	public String generateEncodedPassword(@RequestBody String plainPassword)
+	{
+		return tokenUtils.generateEncodedPassword(plainPassword);
 
 	}
 
