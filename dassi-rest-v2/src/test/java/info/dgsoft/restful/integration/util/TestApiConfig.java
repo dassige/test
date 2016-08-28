@@ -1,6 +1,6 @@
 package info.dgsoft.restful.integration.util;
 
-import info.dgsoft.restful.auth.domain.json.AuthenticationRequest;
+import info.dgsoft.restful.api.security.json.AuthenticationRequest;
 
 public class TestApiConfig {
 

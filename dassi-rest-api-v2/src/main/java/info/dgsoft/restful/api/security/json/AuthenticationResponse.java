@@ -1,8 +1,9 @@
-package info.dgsoft.restful.auth.domain.json;
+package info.dgsoft.restful.api.security.json;
 
-import info.dgsoft.restful.model.base.ModelBase;
+import java.io.Serializable;
 
-public class AuthenticationResponse extends ModelBase {
+
+public class AuthenticationResponse implements Serializable {
 
 	private static final long serialVersionUID = -6624726180748515507L;
 	private String token;

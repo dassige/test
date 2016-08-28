@@ -2,7 +2,7 @@ package info.dgsoft.restful.unit.model.json;
 
 import org.junit.Test;
 
-import info.dgsoft.restful.auth.domain.json.AuthenticationRequest;
+import info.dgsoft.restful.api.security.json.AuthenticationRequest;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertNull;

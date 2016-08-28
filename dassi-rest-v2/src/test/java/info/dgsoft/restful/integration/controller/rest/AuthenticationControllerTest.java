@@ -1,8 +1,8 @@
 package info.dgsoft.restful.integration.controller.rest;
 
 import info.dgsoft.Application;
-import info.dgsoft.restful.auth.domain.json.AuthenticationRequest;
-import info.dgsoft.restful.auth.domain.json.AuthenticationResponse;
+import info.dgsoft.restful.api.security.json.AuthenticationRequest;
+import info.dgsoft.restful.api.security.json.AuthenticationResponse;
 import info.dgsoft.restful.auth.security.TokenUtils;
 import info.dgsoft.restful.integration.util.RequestEntityBuilder;
 import info.dgsoft.restful.integration.util.TestApiConfig;
