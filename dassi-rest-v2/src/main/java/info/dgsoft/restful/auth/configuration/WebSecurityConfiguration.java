@@ -77,6 +77,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter
 				.authenticationEntryPoint(this.unauthorizedHandler).and().sessionManagement()
 				.sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().authorizeRequests()
 				.antMatchers(HttpMethod.OPTIONS, "/**").permitAll().antMatchers("/auth/**")
+				.permitAll().antMatchers("/public/**")
 				.permitAll().anyRequest().authenticated();
 
 		// Custom JWT based authentication
