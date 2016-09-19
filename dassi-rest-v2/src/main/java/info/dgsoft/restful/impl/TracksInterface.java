@@ -9,4 +9,6 @@ public interface TracksInterface
 	public Collection<DGTrackEntity> getTracks(String origin);
 
 	void saveTrack(DGTrackEntity track);
+
+	Collection<String> getTracked();
 }

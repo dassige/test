@@ -22,6 +22,12 @@ public class TracksImpl implements TracksInterface
 	}
 
 	@Override
+	public Collection<String> getTracked()
+	{
+		return (Collection<String>) repo.listTracked();
+	}
+
+	@Override
 	public void saveTrack(DGTrackEntity entity)
 	{
 		repo.save(entity);
