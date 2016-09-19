@@ -81,9 +81,9 @@ public class TrackController
 					@ApiResponse(code = 403, message = "Forbidden"),
 					@ApiResponse(code = 404, message = "Not Found"),
 					@ApiResponse(code = 500, message = "Failure") })
-	@RequestMapping(value = "/public/track/{origin}/*kml", method = RequestMethod.GET)
+	@RequestMapping(value = "/public/track/{origin}/*kml", method = RequestMethod.GET, produces = MediaType.TEXT_PLAIN_VALUE)
 	@ResponseBody
-	public ResponseEntity<?> getKMLTracks(@PathVariable String origin) throws Throwable
+	public String getKMLTracks(@PathVariable String origin) throws Throwable
 	{
 		Collection<DGTrackEntity> entities = trackImpl.getTracks(origin);
 		Collection<DGTrack> tracks = new ArrayList<>();
@@ -93,7 +93,7 @@ public class TrackController
 		}
 		StringBuffer buff;
 		buff = kmlImpl.getKML(tracks);
-		return ResponseEntity.ok().contentType(MediaType.TEXT_XML).body(buff.toString());
+		return (buff.toString());
 	}
 
 	@ApiOperation(value = "GetTracked", nickname = "nick GetTracked", notes = "gets the tracked")
